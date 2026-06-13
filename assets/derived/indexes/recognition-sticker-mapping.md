@@ -1,0 +1,57 @@
+# Recognition Sticker Mapping
+
+- Total Canonical Entries: 51
+
+| Key | 中文名 | Sticker | Object | Tag | Priority |
+| --- | --- | --- | --- | --- | --- |
+| `rice` | 米饭 | `sticker_food_rice_bowl` | `bowl` | `` | 1 |
+| `ramen` | 拉面 | `sticker_food_ramen_bowl` | `bowl` | `` | 1 |
+| `bread` | 面包 | `sticker_food_bread_loaf` | `bowl` | `` | 2 |
+| `sandwich` | 三明治 | `sticker_food_sandwich_triangle` | `bowl` | `` | 2 |
+| `bao` | 包子 | `sticker_food_bao_bun` | `bowl` | `` | 2 |
+| `dumplings` | 小笼包 | `sticker_food_soup_dumplings_basket` | `bowl` | `` | 2 |
+| `siu_mai` | 烧卖 | `sticker_food_siu_mai_basket` | `bowl` | `` | 2 |
+| `congee` | 粥 | `sticker_food_congee_bowl` | `bowl` | `` | 2 |
+| `onigiri` | 饭团 | `sticker_food_onigiri` | `bowl` | `` | 2 |
+| `chicken_leg` | 鸡腿 | `sticker_food_roast_chicken_leg` | `bowl` | `` | 1 |
+| `chicken_breast` | 鸡胸肉 | `sticker_food_sliced_chicken_breast` | `bowl` | `` | 1 |
+| `beef` | 牛排 | `sticker_food_beef_steak` | `bowl` | `` | 1 |
+| `salmon` | 三文鱼 | `sticker_food_salmon_fillet` | `bowl` | `` | 1 |
+| `shrimp` | 虾 | `sticker_food_shrimp` | `bowl` | `` | 1 |
+| `fried_egg` | 煎蛋 | `sticker_food_fried_egg` | `bowl` | `` | 2 |
+| `broccoli` | 西兰花 | `sticker_food_broccoli` | `bowl` | `` | 3 |
+| `tomato` | 番茄 | `sticker_food_tomato` | `bowl` | `` | 3 |
+| `cucumber` | 黄瓜 | `sticker_food_cucumber` | `bowl` | `` | 3 |
+| `salad` | 沙拉拼盘 | `sticker_food_salad_bowl` | `bowl` | `` | 2 |
+| `veggie_assortment` | 蔬菜拼盘 | `sticker_food_veggie_assortment` | `bowl` | `` | 3 |
+| `strawberry` | 草莓 | `sticker_food_strawberry` | `bowl` | `` | 3 |
+| `apple` | 苹果 | `sticker_food_apple` | `bowl` | `` | 3 |
+| `banana` | 香蕉 | `sticker_food_banana` | `bowl` | `` | 3 |
+| `orange` | 橙子 | `sticker_food_orange` | `bowl` | `` | 3 |
+| `blueberries` | 蓝莓 | `sticker_food_blueberries` | `bowl` | `` | 3 |
+| `kiwi` | 猕猴桃 | `sticker_food_kiwi` | `bowl` | `` | 3 |
+| `grapes` | 葡萄 | `sticker_food_grapes` | `bowl` | `` | 3 |
+| `cookie` | 饼干 | `sticker_food_cookie` | `bowl` | `` | 4 |
+| `cake` | 蛋糕 | `sticker_food_strawberry_cake` | `bowl` | `` | 4 |
+| `ice_cream` | 冰淇淋 | `sticker_food_strawberry_ice_cream` | `bowl` | `` | 4 |
+| `chocolate` | 巧克力 | `sticker_food_chocolate_bar` | `bowl` | `` | 4 |
+| `donut` | 甜甜圈 | `sticker_food_donut` | `bowl` | `` | 4 |
+| `chips` | 薯片 | `sticker_food_potato_chips` | `bowl` | `` | 4 |
+| `burger` | 汉堡 | `sticker_food_burger` | `bowl` | `` | 2 |
+| `fried_chicken` | 炸鸡 | `sticker_food_fried_chicken` | `bowl` | `` | 2 |
+| `fries` | 薯条 | `sticker_food_french_fries` | `bowl` | `` | 4 |
+| `pizza` | 披萨 | `sticker_food_pizza_slice` | `bowl` | `` | 2 |
+| `breakfast_plate` | 早餐盘 | `sticker_food_breakfast_plate` | `bowl` | `` | 2 |
+| `bento` | 便当 | `sticker_food_combo_assorted_meals` | `bowl` | `` | 2 |
+| `combo_meal` | 组合餐 | `sticker_food_combo_assorted_meals` | `bowl` | `` | 2 |
+| `burger_combo` | 汉堡套餐 | `sticker_food_combo_burger_fries_cola` | `bowl` | `` | 2 |
+| `water` | 水 | `sticker_drink_water_bottle` | `bottle` | `` | 1 |
+| `green_tea` | 绿茶 | `sticker_drink_green_tea_bottle` | `bottle` | `` | 2 |
+| `coffee` | 咖啡 | `sticker_drink_coffee_cup` | `bottle` | `tag_drink_caffeinated` | 2 |
+| `milk` | 牛奶 | `sticker_drink_milk_bottle` | `bottle` | `` | 2 |
+| `yogurt` | 酸奶 | `sticker_drink_yogurt_bottle` | `bottle` | `` | 2 |
+| `soy_milk` | 豆浆 | `sticker_drink_soy_milk_bottle` | `bottle` | `` | 2 |
+| `orange_juice` | 橙汁 | `sticker_drink_orange_juice_bottle` | `bottle` | `tag_drink_sweet` | 2 |
+| `milk_tea` | 奶茶 | `sticker_drink_milk_tea_cup` | `bottle` | `tag_drink_sweet` | 1 |
+| `cola` | 可乐 | `sticker_drink_cola_bottle` | `bottle` | `tag_drink_sweet` | 1 |
+| `sparkling_water` | 气泡水 | `sticker_drink_sparkling_water_bottle` | `bottle` | `` | 2 |

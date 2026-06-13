@@ -1,0 +1,52 @@
+﻿recognition_key,synonyms,display_name_zh,sticker_asset_name,domain,subcategory,target_object,status_tag,representative_priority
+rice,"米饭,白米饭,rice,steamed rice",米饭,sticker_food_rice_bowl,food,staple,bowl,,1
+ramen,"拉面,面条,ramen,noodles",拉面,sticker_food_ramen_bowl,food,staple,bowl,,1
+bread,"面包,吐司,bread,toast loaf",面包,sticker_food_bread_loaf,food,staple,bowl,,2
+sandwich,"三明治,sandwich",三明治,sticker_food_sandwich_triangle,food,staple,bowl,,2
+bao,"包子,bao,steamed bun",包子,sticker_food_bao_bun,food,staple,bowl,,2
+dumplings,"小笼包,汤包,soup dumplings,xiaolongbao",小笼包,sticker_food_soup_dumplings_basket,food,staple,bowl,,2
+siu_mai,"烧卖,siu mai,shumai",烧卖,sticker_food_siu_mai_basket,food,staple,bowl,,2
+congee,"粥,congee,porridge",粥,sticker_food_congee_bowl,food,staple,bowl,,2
+onigiri,"饭团,onigiri,rice ball",饭团,sticker_food_onigiri,food,staple,bowl,,2
+chicken_leg,"鸡腿,炸鸡腿,roast chicken leg,chicken drumstick",鸡腿,sticker_food_roast_chicken_leg,food,protein,bowl,,1
+chicken_breast,"鸡胸肉,chicken breast,sliced chicken",鸡胸肉,sticker_food_sliced_chicken_breast,food,protein,bowl,,1
+beef,"牛排,牛肉,beef,steak",牛排,sticker_food_beef_steak,food,protein,bowl,,1
+salmon,"三文鱼,鲑鱼,salmon",三文鱼,sticker_food_salmon_fillet,food,protein,bowl,,1
+shrimp,"虾,shrimp,prawn",虾,sticker_food_shrimp,food,protein,bowl,,1
+fried_egg,"煎蛋,鸡蛋,fried egg,sunny side up",煎蛋,sticker_food_fried_egg,food,protein,bowl,,2
+broccoli,"西兰花,broccoli",西兰花,sticker_food_broccoli,food,vegetable,bowl,,3
+tomato,"番茄,西红柿,tomato",番茄,sticker_food_tomato,food,vegetable,bowl,,3
+cucumber,"黄瓜,cucumber",黄瓜,sticker_food_cucumber,food,vegetable,bowl,,3
+salad,"沙拉,蔬菜沙拉,salad",沙拉拼盘,sticker_food_salad_bowl,food,combo_meal,bowl,,2
+veggie_assortment,"蔬菜拼盘,豆腐沙拉,vegetable mix",蔬菜拼盘,sticker_food_veggie_assortment,food,vegetable_combo,bowl,,3
+strawberry,"草莓,strawberry",草莓,sticker_food_strawberry,food,fruit,bowl,,3
+apple,"苹果,apple",苹果,sticker_food_apple,food,fruit,bowl,,3
+banana,"香蕉,banana",香蕉,sticker_food_banana,food,fruit,bowl,,3
+orange,"橙子,橘子,orange",橙子,sticker_food_orange,food,fruit,bowl,,3
+blueberries,"蓝莓,blueberries,blueberry",蓝莓,sticker_food_blueberries,food,fruit,bowl,,3
+kiwi,"猕猴桃,kiwi",猕猴桃,sticker_food_kiwi,food,fruit,bowl,,3
+grapes,"葡萄,grapes,grape",葡萄,sticker_food_grapes,food,fruit,bowl,,3
+cookie,"曲奇,饼干,cookie,biscuit",饼干,sticker_food_cookie,food,snack,bowl,,4
+cake,"蛋糕,cake,strawberry cake",蛋糕,sticker_food_strawberry_cake,food,dessert,bowl,,4
+ice_cream,"冰淇淋,ice cream",冰淇淋,sticker_food_strawberry_ice_cream,food,dessert,bowl,,4
+chocolate,"巧克力,chocolate bar",巧克力,sticker_food_chocolate_bar,food,dessert,bowl,,4
+donut,"甜甜圈,donut,doughnut",甜甜圈,sticker_food_donut,food,dessert,bowl,,4
+chips,"薯片,potato chips,crisps",薯片,sticker_food_potato_chips,food,snack,bowl,,4
+burger,"汉堡,burger,hamburger",汉堡,sticker_food_burger,food,fast_food,bowl,,2
+fried_chicken,"炸鸡,fried chicken",炸鸡,sticker_food_fried_chicken,food,fast_food,bowl,,2
+fries,"薯条,french fries,fries",薯条,sticker_food_french_fries,food,fast_food,bowl,,4
+pizza,"披萨,pizza",披萨,sticker_food_pizza_slice,food,fast_food,bowl,,2
+breakfast_plate,"早餐,早餐盘,breakfast plate",早餐盘,sticker_food_breakfast_plate,food,combo_meal,bowl,,2
+bento,"便当,bento,lunch box",便当,sticker_food_combo_assorted_meals,food,combo_meal,bowl,,2
+combo_meal,"套餐,组合餐,combo meal,meal set",组合餐,sticker_food_combo_assorted_meals,food,combo_meal,bowl,,2
+burger_combo,"汉堡套餐,burger combo,fast food combo",汉堡套餐,sticker_food_combo_burger_fries_cola,food,combo_meal,bowl,,2
+water,"水,白水,矿泉水,water",水,sticker_drink_water_bottle,drink,water,bottle,,1
+green_tea,"绿茶,green tea,tea",绿茶,sticker_drink_green_tea_bottle,drink,tea,bottle,,2
+coffee,"咖啡,coffee",咖啡,sticker_drink_coffee_cup,drink,coffee,bottle,tag_drink_caffeinated,2
+milk,"牛奶,milk",牛奶,sticker_drink_milk_bottle,drink,milk,bottle,,2
+yogurt,"酸奶,yogurt",酸奶,sticker_drink_yogurt_bottle,drink,yogurt,bottle,,2
+soy_milk,"豆浆,soy milk",豆浆,sticker_drink_soy_milk_bottle,drink,soy_milk,bottle,,2
+orange_juice,"橙汁,果汁,orange juice,juice",橙汁,sticker_drink_orange_juice_bottle,drink,juice,bottle,tag_drink_sweet,2
+milk_tea,"奶茶,milk tea,boba,bubble tea",奶茶,sticker_drink_milk_tea_cup,drink,milk_tea,bottle,tag_drink_sweet,1
+cola,"可乐,cola,coke,soda",可乐,sticker_drink_cola_bottle,drink,cola,bottle,tag_drink_sweet,1
+sparkling_water,"气泡水,sparkling water,soda water",气泡水,sticker_drink_sparkling_water_bottle,drink,sparkling_water,bottle,,2
