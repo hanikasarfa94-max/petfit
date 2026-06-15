@@ -1,0 +1,102 @@
+{
+  "version": "2026-06-15",
+  "recognitionTargetObjectRouting": {
+    "food": "bowl",
+    "drink": "bottle",
+    "rest": "manual_record_only"
+  },
+  "objectAssetRules": {
+    "bowl": [
+      {
+        "maxTotalItems": 0,
+        "assetName": "object_bowl_empty"
+      },
+      {
+        "maxTotalItems": 3,
+        "assetName": "object_bowl_light_fruit"
+      },
+      {
+        "maxTotalItems": 6,
+        "assetName": "object_bowl_full_fruit_salad"
+      },
+      {
+        "maxTotalItems": null,
+        "assetName": "object_bowl_overflow_plus_n",
+        "notes": "null means positive infinity"
+      }
+    ],
+    "bottle": [
+      {
+        "minProgress": null,
+        "maxProgressExclusive": 0,
+        "assetName": "object_bottle_empty",
+        "notes": "null means negative infinity"
+      },
+      {
+        "minProgress": 0,
+        "maxProgressExclusive": 0.25,
+        "assetName": "object_bottle_water_low"
+      },
+      {
+        "minProgress": 0.25,
+        "maxProgressExclusive": 0.6,
+        "assetName": "object_bottle_water_mid"
+      },
+      {
+        "minProgress": 0.6,
+        "maxProgressExclusive": 1,
+        "assetName": "object_bottle_water_high"
+      },
+      {
+        "minProgress": 1,
+        "maxProgressExclusive": null,
+        "assetName": "object_bottle_water_full"
+      }
+    ],
+    "cushion": [
+      {
+        "key": "idle",
+        "assetName": "object_cushion_idle_flat"
+      },
+      {
+        "key": "finished",
+        "assetName": "object_cushion_finished_plush"
+      },
+      {
+        "key": "resting",
+        "assetName": "object_cushion_resting_with_buding"
+      },
+      {
+        "key": "used",
+        "assetName": "object_cushion_used_soft"
+      }
+    ]
+  },
+  "bottleStatusTagAssetNames": [
+    "tag_drink_sweet",
+    "tag_drink_caffeinated",
+    "tag_drink_low_sugar",
+    "tag_drink_sugar_free"
+  ],
+  "runtimeConsumers": {
+    "recognitionCatalog": "src/data/recognition-catalog.ts",
+    "recognitionStickerMapping": "assets/derived/indexes/recognition-sticker-mapping.json",
+    "selectors": "src/domain/selectors.ts"
+  },
+  "integrationContracts": {
+    "backendRecognitionResultFields": [
+      "recognitionKey",
+      "displayName",
+      "targetObject",
+      "stickerAssetName",
+      "statusTag",
+      "representativePriority"
+    ],
+    "frontendStateBuckets": [
+      "foodRecords",
+      "drinkRecords",
+      "restRecords",
+      "captureSessions"
+    ]
+  }
+}

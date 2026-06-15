@@ -2,3 +2,10 @@ __pycache__/
 *.py[cod]
 Thumbs.db
 .DS_Store
+node_modules/
+dist/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+.codex/
+*.log

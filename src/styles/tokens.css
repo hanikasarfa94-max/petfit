@@ -1,0 +1,26 @@
+:root {
+  color-scheme: light;
+  font-family: "Avenir Next", "Segoe UI", "PingFang SC", "Noto Sans SC",
+    sans-serif;
+  --pf-bg: #f4ead3;
+  --pf-surface: rgba(255, 252, 246, 0.88);
+  --pf-surface-strong: #fff9ef;
+  --pf-surface-muted: #f7f0e1;
+  --pf-line: rgba(88, 70, 44, 0.12);
+  --pf-line-strong: rgba(88, 70, 44, 0.2);
+  --pf-text: #433224;
+  --pf-text-soft: #7a6450;
+  --pf-mint: #d6eddc;
+  --pf-mint-strong: #7ab48a;
+  --pf-peach: #ffd8bf;
+  --pf-peach-strong: #f18d58;
+  --pf-sky: #dceaf9;
+  --pf-sky-strong: #6f99d8;
+  --pf-shadow: 0 24px 60px rgba(120, 88, 44, 0.16);
+  --pf-shadow-soft: 0 14px 30px rgba(120, 88, 44, 0.1);
+  --pf-radius-xl: 32px;
+  --pf-radius-lg: 24px;
+  --pf-radius-md: 18px;
+  --pf-radius-sm: 14px;
+  --pf-content-width: 420px;
+}

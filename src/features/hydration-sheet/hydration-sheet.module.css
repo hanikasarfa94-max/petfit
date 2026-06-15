@@ -1,0 +1,135 @@
+.closeButton {
+  border: none;
+  background: rgba(41, 88, 118, 0.08);
+  color: #295876;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.previewCard {
+  border-radius: 1.4rem;
+  padding: 1rem 1.05rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(225, 244, 255, 0.88));
+  border: 1px solid rgba(84, 148, 184, 0.18);
+  box-shadow: 0 18px 32px rgba(69, 123, 157, 0.12);
+}
+
+.previewLabel {
+  margin: 0 0 0.3rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6f93a8;
+}
+
+.previewValue {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #23445a;
+}
+
+.previewMeta {
+  margin: 0.35rem 0 0;
+  font-size: 0.92rem;
+  color: #5f7480;
+}
+
+.section {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #36556c;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.presetButton {
+  justify-content: flex-start;
+  min-height: 4.4rem;
+}
+
+.presetContent {
+  display: grid;
+  gap: 0.16rem;
+  text-align: left;
+}
+
+.presetTitle {
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.presetMeta {
+  font-size: 0.8rem;
+  color: #6b7e88;
+}
+
+.amountRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.amountButton {
+  min-width: 5rem;
+}
+
+.noteInput {
+  width: 100%;
+  min-height: 6.2rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(84, 148, 184, 0.18);
+  background: rgba(255, 255, 255, 0.95);
+  color: #23445a;
+  font: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.noteInput:focus {
+  outline: 2px solid rgba(84, 148, 184, 0.28);
+  outline-offset: 2px;
+}
+
+.footer {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.submitButton {
+  width: 100%;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(135deg, #69c1f3, #53a5d4);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  box-shadow: 0 18px 28px rgba(67, 143, 189, 0.22);
+}
+
+.supportingText {
+  margin: 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: #738893;
+}

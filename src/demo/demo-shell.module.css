@@ -1,0 +1,344 @@
+.app {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.72), transparent 36%),
+    linear-gradient(180deg, #ecf1f6, #dfe7ef);
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.app::before {
+  inset: -6%;
+  background-image: var(--stage-bg-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(28px) saturate(0.92);
+  opacity: 0.46;
+  transform: scale(1.08);
+}
+
+.app::after {
+  background:
+    linear-gradient(180deg, rgba(248, 250, 252, 0.24), rgba(232, 238, 246, 0.44)),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.14), transparent 52%);
+}
+
+.phone {
+  width: min(100%, min(calc((100svh - 2rem) * 941 / 1672), 430px));
+  aspect-ratio: 941 / 1672;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.88), transparent 28%),
+    linear-gradient(180deg, rgba(255, 250, 242, 0.82), rgba(255, 244, 229, 0.96)),
+    linear-gradient(180deg, #f7e8d1, #f3dcc0);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 42px;
+  box-shadow: 0 28px 72px rgba(133, 93, 45, 0.18);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone::before,
+.phone::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.phone::before {
+  width: 13rem;
+  height: 13rem;
+  top: -4rem;
+  right: -5rem;
+  background: rgba(255, 214, 160, 0.48);
+  filter: blur(16px);
+}
+
+.phone::after {
+  width: 10rem;
+  height: 10rem;
+  bottom: 6rem;
+  left: -3rem;
+  background: rgba(255, 247, 230, 0.76);
+  filter: blur(14px);
+}
+
+.viewport {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  z-index: 1;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.35rem 1.5rem 0;
+  color: #23160b;
+  font-weight: 700;
+  font-size: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.statusIcons {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55rem;
+}
+
+.signal {
+  display: inline-flex;
+  gap: 0.18rem;
+  align-items: flex-end;
+}
+
+.signal span {
+  width: 0.18rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.signal span:nth-child(1) {
+  height: 0.4rem;
+}
+
+.signal span:nth-child(2) {
+  height: 0.55rem;
+}
+
+.signal span:nth-child(3) {
+  height: 0.72rem;
+}
+
+.signal span:nth-child(4) {
+  height: 0.9rem;
+}
+
+.wifi {
+  width: 1rem;
+  height: 0.75rem;
+  border: 0.16rem solid currentColor;
+  border-color: currentColor transparent transparent transparent;
+  border-radius: 999px 999px 0 0;
+  transform: translateY(0.2rem);
+}
+
+.battery {
+  width: 1.55rem;
+  height: 0.78rem;
+  border: 0.12rem solid currentColor;
+  border-radius: 0.18rem;
+  position: relative;
+}
+
+.battery::before {
+  content: "";
+  position: absolute;
+  top: 0.12rem;
+  right: 0.12rem;
+  bottom: 0.12rem;
+  left: 0.12rem;
+  background: currentColor;
+  border-radius: 0.12rem;
+}
+
+.battery::after {
+  content: "";
+  position: absolute;
+  right: -0.18rem;
+  top: 0.18rem;
+  width: 0.12rem;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.page {
+  padding: 0.65rem 1.25rem 1.35rem;
+  min-height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.backButton,
+.ghostButton {
+  width: 3.1rem;
+  height: 3.1rem;
+  position: relative;
+  border-radius: 1.1rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(122, 83, 41, 0.12);
+}
+
+.backButton::before,
+.ghostButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: center / contain no-repeat url("../../assets/derived/ui-kit/shell_button_square_secondary.png");
+}
+
+.backButton img,
+.ghostButton img {
+  position: relative;
+  z-index: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.title {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  color: #56341e;
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.topSpacer {
+  width: 3.1rem;
+  height: 3.1rem;
+}
+
+.speechBubble {
+  position: relative;
+  max-width: 16rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1.75rem;
+  background: center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_bubble_speech_lg.png");
+  color: #765239;
+  box-shadow: 0 16px 32px rgba(122, 83, 41, 0.12);
+  line-height: 1.45;
+  font-size: 1rem;
+}
+
+.speechBubble::after {
+  display: none;
+}
+
+.glassCard {
+  background:
+    center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_card_blank.png"),
+    rgba(255, 252, 246, 0.86);
+  border: 1px solid rgba(154, 108, 63, 0.06);
+  border-radius: 2rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.86),
+    0 16px 32px rgba(122, 83, 41, 0.1);
+}
+
+.primaryLink,
+.secondaryLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 4.4rem;
+  padding: 0 1.4rem;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #634127;
+  box-shadow: 0 14px 28px rgba(122, 83, 41, 0.11);
+  overflow: hidden;
+}
+
+.primaryLink {
+  background: center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_button_pill_primary_lg.png");
+  color: #fffdf8;
+}
+
+.secondaryLink {
+  background: center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_button_pill_secondary_lg.png");
+}
+
+.linkIcon {
+  position: relative;
+  z-index: 1;
+  width: 1.3rem;
+  height: 1.3rem;
+  object-fit: contain;
+}
+
+.actionRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.dateRail {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.45rem;
+  padding: 0.55rem;
+}
+
+.dateChip {
+  text-align: center;
+  padding: 0.85rem 0.25rem;
+  border-radius: 999px;
+  color: #8a6748;
+}
+
+.dateChipStrong {
+  background: center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_chip_circle_primary.png");
+  color: #6d471f;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+}
+
+.dateLabel {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.18rem;
+}
+
+.dateValue {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.caption {
+  margin: 0;
+  text-align: center;
+  color: #9a7b5b;
+  font-size: 0.98rem;
+}

@@ -1,0 +1,161 @@
+.settingsPage {
+  gap: 0.96rem;
+}
+
+.pageTitle {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  color: #5f391f;
+  font-size: 2.1rem;
+}
+
+.profileCard {
+  display: grid;
+  grid-template-columns: 8.9rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 1.15rem 1.1rem;
+  border-radius: 2rem;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 245, 0.98), rgba(255, 245, 232, 0.96)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 244, 226, 0.68));
+  border: 1px solid rgba(241, 210, 176, 0.86);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 18px 32px rgba(122, 83, 41, 0.08);
+}
+
+.profileMascot {
+  width: 100%;
+  align-self: end;
+  object-fit: contain;
+}
+
+.profileInfo {
+  display: grid;
+  align-content: center;
+  gap: 0.45rem;
+}
+
+.profileInfo h2,
+.profileInfo p,
+.footer {
+  margin: 0;
+}
+
+.profileInfo h2 {
+  color: #5d3820;
+  font-size: 2rem;
+}
+
+.profileInfo p {
+  color: #906e4e;
+}
+
+.profileStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.65rem;
+}
+
+.profileStat {
+  min-height: 4.75rem;
+  padding: 0.78rem 0.78rem 0.72rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1.35rem;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(255, 245, 232, 0.94));
+  border: 1px solid rgba(241, 214, 188, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.94),
+    0 10px 20px rgba(122, 83, 41, 0.05);
+}
+
+.profileStat span,
+.groupText span {
+  display: block;
+  color: #987454;
+}
+
+.profileStat strong {
+  display: block;
+  margin-top: 0.18rem;
+  color: #644228;
+  font-size: 1.34rem;
+  line-height: 1.1;
+}
+
+.groupStack {
+  display: grid;
+  gap: 0.86rem;
+}
+
+.groupCard {
+  display: grid;
+  gap: 0.78rem;
+}
+
+.groupRow {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  gap: 0.84rem;
+  align-items: center;
+  min-height: 5.55rem;
+  padding: 1rem 1.05rem;
+  border-radius: 1.85rem;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 245, 0.98), rgba(255, 245, 232, 0.95)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 244, 226, 0.66));
+  border: 1px solid rgba(241, 210, 176, 0.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 14px 24px rgba(122, 83, 41, 0.07);
+}
+
+.groupIcon {
+  width: 2.85rem;
+  height: 2.85rem;
+  display: grid;
+  place-items: center;
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(255, 244, 229, 0.94));
+  border: 1px solid rgba(241, 214, 188, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.94),
+    0 8px 16px rgba(122, 83, 41, 0.05);
+}
+
+.groupIconAsset {
+  width: 1.34rem;
+  height: 1.34rem;
+  object-fit: contain;
+}
+
+.groupText strong {
+  display: block;
+  color: #654128;
+  font-size: 1.24rem;
+  line-height: 1.1;
+}
+
+.groupText span {
+  margin-top: 0.2rem;
+  line-height: 1.36;
+}
+
+.chevron {
+  color: #aa8563;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 0.7rem;
+  text-align: center;
+  color: #b08a67;
+}

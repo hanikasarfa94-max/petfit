@@ -1,0 +1,128 @@
+.closeButton {
+  border: none;
+  background: rgba(110, 104, 166, 0.08);
+  color: #645aa7;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.timerCard {
+  border-radius: 1.6rem;
+  padding: 1.15rem 1.1rem;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.94), rgba(240, 235, 255, 0.92));
+  border: 1px solid rgba(139, 129, 212, 0.18);
+  box-shadow: 0 18px 32px rgba(128, 115, 196, 0.12);
+  display: grid;
+  gap: 0.8rem;
+}
+
+.timerLabel {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8b7bc0;
+}
+
+.timerValue {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #51468a;
+}
+
+.timerMeta {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #736c9f;
+}
+
+.progressRail {
+  height: 0.7rem;
+  border-radius: 999px;
+  background: rgba(110, 104, 166, 0.12);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #c7b6ff, #7f6ddd);
+  transition: width 180ms ease;
+}
+
+.section {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #64579a;
+}
+
+.optionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.optionButton {
+  min-width: 5rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.primaryButton,
+.secondaryButton,
+.saveButton {
+  border: none;
+  border-radius: 1.2rem;
+  padding: 0.95rem 1rem;
+  font: inherit;
+  font-weight: 800;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #8c7af0, #6555c6);
+  color: #fff;
+  box-shadow: 0 16px 26px rgba(101, 85, 198, 0.24);
+}
+
+.secondaryButton {
+  background: rgba(110, 104, 166, 0.08);
+  color: #584d8c;
+}
+
+.footer {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.saveButton {
+  width: 100%;
+  background: linear-gradient(135deg, #f3bb89, #e1916a);
+  color: #fff;
+  box-shadow: 0 16px 26px rgba(201, 124, 82, 0.2);
+}
+
+.supportingText {
+  margin: 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: #7d739c;
+}

@@ -1,0 +1,302 @@
+.homePage {
+  flex: 1;
+  min-height: 100%;
+  padding: 0.08rem 0.12rem 0.12rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.roomScene {
+  position: relative;
+  flex: 1;
+  min-height: 100%;
+  overflow: hidden;
+  border-radius: 1.85rem;
+  background: linear-gradient(180deg, #fff8ee, #f7e2c3);
+}
+
+.sceneBackground,
+.sceneVeil {
+  position: absolute;
+  inset: 0;
+}
+
+.sceneBackground {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.sceneVeil {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 244, 0.05), rgba(248, 229, 197, 0.08)),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 34%);
+}
+
+.topBar,
+.settingsButton,
+.stickerZone,
+.heroMascot,
+.objectHotspotLeft,
+.objectHotspotRight,
+.objectHotspotCenter,
+.homeDock {
+  position: absolute;
+  z-index: 1;
+}
+
+.topBar {
+  left: 0.85rem;
+  right: 4.6rem;
+  top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.72rem;
+}
+
+.brandMark {
+  color: #6c4320;
+  font-size: 2.35rem;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.42);
+}
+
+.streakCard {
+  position: relative;
+  min-width: 8.1rem;
+  min-height: 3.08rem;
+  padding: 0.5rem 0.92rem 0.54rem 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.46rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 251, 245, 0.95), rgba(250, 240, 223, 0.9));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 10px 18px rgba(179, 138, 84, 0.12);
+  filter: drop-shadow(0 10px 18px rgba(179, 138, 84, 0.12));
+  overflow: hidden;
+}
+
+.streakCardBg {
+  position: absolute;
+  inset: 0.08rem 0.1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.86;
+  transform: scale(0.988);
+  filter: blur(0.38px) saturate(0.76) hue-rotate(-8deg) brightness(1.02);
+}
+
+.streakFlame,
+.streakCopy {
+  position: relative;
+  z-index: 1;
+}
+
+.streakFlame {
+  width: 1.22rem;
+  height: 1.56rem;
+  object-fit: contain;
+}
+
+.streakCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
+}
+
+.streakLabel,
+.streakValue {
+  display: block;
+}
+
+.streakLabel {
+  color: rgba(112, 82, 50, 0.8);
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+.streakValue {
+  color: #6a4525;
+  font-size: 1.12rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.settingsButton {
+  top: 0.84rem;
+  right: 0.84rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: grid;
+  place-items: center;
+}
+
+.settingsButtonBg,
+.settingsButtonIcon {
+  position: absolute;
+}
+
+.settingsButtonBg {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.settingsButtonIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  object-fit: contain;
+  filter: grayscale(0.42) saturate(0.74) brightness(0.82);
+}
+
+.stickerZone {
+  top: 11.1rem;
+  right: 0.42rem;
+  width: 4.48rem;
+  height: 6.28rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.stickerPlaceholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.35rem;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  opacity: 0;
+}
+
+.heroMascot {
+  left: 50%;
+  bottom: 13.2rem;
+  transform: translateX(-50%);
+  width: 17.05rem;
+  filter: drop-shadow(0 18px 28px rgba(160, 109, 58, 0.18));
+}
+
+.objectHotspotLeft {
+  left: 0.55rem;
+  bottom: 11.6rem;
+  width: 7.15rem;
+  height: 7rem;
+  z-index: 2;
+}
+
+.objectHotspotRight {
+  right: 0.15rem;
+  bottom: 8.1rem;
+  width: 8.2rem;
+  height: 10.2rem;
+  z-index: 2;
+}
+
+.objectHotspotCenter {
+  left: 50%;
+  bottom: 6rem;
+  width: 9.2rem;
+  height: 6rem;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.homeDock {
+  left: 0.15rem;
+  right: 0.15rem;
+  bottom: 0.22rem;
+  padding: 0 0.32rem 0.06rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 0.52rem;
+}
+
+.dockSide {
+  position: relative;
+  min-height: 4.95rem;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.dockSideArtFrame {
+  position: relative;
+  width: 3.05rem;
+  height: 3.05rem;
+  overflow: visible;
+}
+
+.dockSideIcon,
+.dockPrimaryIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  filter: drop-shadow(0 5px 10px rgba(179, 128, 69, 0.14));
+}
+
+.dockSideIcon {
+  width: 2.28rem;
+  height: 2.28rem;
+}
+
+.dockPrimaryIcon {
+  width: 2.95rem;
+  height: 2.95rem;
+  max-width: none;
+  max-height: none;
+  clip-path: none;
+  filter: drop-shadow(0 12px 20px rgba(179, 128, 69, 0.18));
+}
+
+.dockSide {
+  display: grid;
+  justify-items: center;
+  align-content: end;
+  gap: 0.28rem;
+  padding-bottom: 0.22rem;
+}
+
+.dockSideLabel {
+  position: relative;
+  z-index: 1;
+  color: #6e4a2b;
+  font-weight: 700;
+  font-size: 0.86rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.dockPrimary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
+  min-height: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  isolation: isolate;
+  justify-self: center;
+  align-self: end;
+  padding: 0;
+}

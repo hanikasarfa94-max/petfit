@@ -1,0 +1,196 @@
+.bottlePage {
+  flex: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.26rem 0.95rem 0.72rem;
+  gap: 0.42rem;
+  overflow: hidden;
+}
+
+.roomScene {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin-top: 0.08rem;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+.sceneBackground,
+.sceneVeil {
+  position: absolute;
+  inset: 0;
+}
+
+.sceneBackground {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sceneVeil {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.05), rgba(255, 244, 229, 0.1)),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 32%);
+}
+
+.heroBubble,
+.heroMascot,
+.drinkBadge,
+.detailHint,
+.dateRailOverlay,
+.actionRowOverlay {
+  position: absolute;
+  z-index: 1;
+}
+
+.heroBubble {
+  top: 3.55rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.88rem 1.35rem;
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.94);
+  box-shadow: 0 14px 28px rgba(122, 83, 41, 0.12);
+  color: #6a4423;
+  font-size: 1.04rem;
+  font-weight: 700;
+}
+
+.heroBubble::after {
+  content: "";
+  position: absolute;
+  right: 1.85rem;
+  bottom: -0.46rem;
+  width: 0.82rem;
+  height: 0.82rem;
+  background: inherit;
+  transform: rotate(45deg);
+  border-radius: 0.18rem;
+}
+
+.heroMascot {
+  right: 1.28rem;
+  bottom: 9.95rem;
+  width: 5.35rem;
+  filter: drop-shadow(0 12px 20px rgba(148, 103, 54, 0.15));
+}
+
+.drinkBadge {
+  width: 2.55rem;
+  height: 2.55rem;
+  padding: 0;
+  text-align: center;
+  filter: drop-shadow(0 6px 10px rgba(70, 120, 180, 0.14));
+}
+
+.drinkBadge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.badgeTag {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.55rem;
+  padding: 0.16rem 0.42rem;
+  border-radius: 999px;
+  background: #ff9d84;
+  color: #fff9f4;
+  font-size: 0.62rem;
+  line-height: 1;
+  text-shadow: none;
+}
+
+.drinkLeftTop {
+  left: 7.95rem;
+  top: 13.4rem;
+}
+
+.drinkRightTop {
+  right: 7.95rem;
+  top: 13.45rem;
+}
+
+.drinkLeftBottom {
+  left: 7.75rem;
+  top: 17rem;
+}
+
+.drinkRightBottom {
+  right: 7.7rem;
+  top: 16.95rem;
+}
+
+.dateRail {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  scroll-padding-inline: 0.12rem;
+  padding: 0.08rem 0;
+}
+
+.dateRailWrap {
+  overflow: hidden;
+  padding: 0.46rem 0.54rem;
+  border-radius: 1.9rem;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 245, 0.92), rgba(255, 245, 231, 0.86));
+  border: 1px solid rgba(241, 210, 176, 0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 12px 24px rgba(122, 83, 41, 0.07);
+}
+
+.dateRail::-webkit-scrollbar {
+  display: none;
+}
+
+.dateChip {
+  flex: 0 0 calc((100% - 0.7rem) / 3);
+  min-width: calc((100% - 0.7rem) / 3);
+  scroll-snap-align: start;
+  padding: 0.78rem 0.18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dateChipStrong {
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f7d678, #efc15e);
+  color: #6d471f;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 218, 0.9),
+    0 8px 14px rgba(213, 164, 72, 0.22);
+}
+
+.actionRow {
+  gap: 0.58rem;
+}
+
+.actionLink {
+  min-height: 3.6rem;
+  padding: 0 1rem;
+  font-size: 0.98rem;
+}
+
+.dateRailOverlay {
+  left: 0.1rem;
+  right: 0.1rem;
+  bottom: 4.65rem;
+  z-index: 2;
+}
+
+.actionRowOverlay {
+  left: 0;
+  right: 0;
+  bottom: 0.18rem;
+  z-index: 2;
+}
