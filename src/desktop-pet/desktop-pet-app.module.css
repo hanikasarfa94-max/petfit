@@ -1,0 +1,215 @@
+:global(html.petfit-desktop-pet),
+:global(html.petfit-desktop-pet body),
+:global(html.petfit-desktop-pet #root) {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+:global(html.petfit-desktop-pet body) {
+  display: block;
+}
+
+.petWindow {
+  width: 100vw;
+  height: 100vh;
+  padding: 8px;
+  box-sizing: border-box;
+  background: transparent;
+  color: #6b4527;
+  font-family:
+    Inter,
+    "Microsoft YaHei",
+    system-ui,
+    sans-serif;
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+.petCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 24% 13%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0) 31%),
+    linear-gradient(180deg, rgba(255, 248, 235, 0.9), rgba(250, 222, 185, 0.76));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 16px 34px rgba(112, 76, 38, 0.24);
+  backdrop-filter: blur(10px);
+}
+
+.windowControls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  display: flex;
+  gap: 6px;
+  -webkit-app-region: no-drag;
+}
+
+.controlButton {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 253, 247, 0.76);
+  color: #7a5231;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(111, 75, 40, 0.12);
+  cursor: pointer;
+}
+
+.speechBubble {
+  position: relative;
+  z-index: 2;
+  width: min(230px, calc(100% - 44px));
+  margin: 45px auto 0;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: rgba(255, 253, 246, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 22px rgba(154, 103, 53, 0.15);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.speechBubble::after {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 253, 246, 0.9);
+  content: "";
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.petStage {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  width: min(230px, 80vw);
+  height: min(220px, 48vh);
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+.petImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 17px 20px rgba(113, 72, 34, 0.18));
+  animation: floatPet 3.4s ease-in-out infinite;
+}
+
+.heart {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  animation: heartBeat 2.6s ease-in-out infinite;
+}
+
+.statusDock {
+  width: calc(100% - 22px);
+  margin: 0 auto 11px;
+  padding: 10px;
+  display: grid;
+  gap: 9px;
+  border-radius: 22px;
+  background: rgba(255, 252, 246, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+}
+
+.statusDock strong,
+.statusLabel {
+  display: block;
+}
+
+.statusLabel {
+  color: rgba(108, 69, 38, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.statusDock strong {
+  margin-top: 2px;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.moodButtons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  -webkit-app-region: no-drag;
+}
+
+.moodButton,
+.moodButtonActive {
+  min-width: 0;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  color: #755130;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.moodButton {
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.moodButtonActive {
+  background: linear-gradient(180deg, #ffe29d, #ffbd52);
+  box-shadow: 0 8px 14px rgba(225, 150, 44, 0.22);
+}
+
+@keyframes floatPet {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(1deg);
+  }
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: scale(0.94);
+  }
+
+  45% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}

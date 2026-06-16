@@ -9,3 +9,7 @@ vite.config.js
 vite.config.d.ts
 .codex/
 *.log
+tools/
+vite-home.png
+.repo-tmp/
+release/

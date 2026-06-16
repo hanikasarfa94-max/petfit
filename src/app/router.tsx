@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import { appRoutes } from './routes';
 
-export const router = createBrowserRouter(appRoutes);
+export const router = createHashRouter(appRoutes);
