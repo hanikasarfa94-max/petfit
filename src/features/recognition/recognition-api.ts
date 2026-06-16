@@ -71,7 +71,7 @@ const createSessionFromResponse = (response: RecognitionApiResponse): CaptureSes
   };
 };
 
-export async function recognizeCurrentCapture(): Promise<CaptureSession> {
+export async function recognizeCurrentCapture(imageDataUrl?: string): Promise<CaptureSession> {
   const catalog = recognitionCatalog.entries.map((entry) => ({
     aliases: entry.synonyms.slice(0, 6),
     domain: entry.domain,
@@ -88,8 +88,11 @@ export async function recognizeCurrentCapture(): Promise<CaptureSession> {
     },
     body: JSON.stringify({
       catalog,
+      imageDataUrl,
       sceneHint:
-        "PetFit mobile app sample capture. The preview contains rice, fried beef, salad, water and milk tea.",
+        imageDataUrl
+          ? "PetFit mobile app camera capture. Recognize food and drink items in the provided photo."
+          : "PetFit mobile app sample capture. The preview contains rice, fried beef, salad, water and milk tea.",
     }),
   });
 

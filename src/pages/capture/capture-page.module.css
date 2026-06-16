@@ -38,18 +38,36 @@
 .previewZone {
   margin-top: 0.2rem;
   border-radius: 2.05rem;
-  overflow: hidden;
   background: transparent;
   box-shadow: none;
 }
 
-.previewImage {
-  display: block;
+.cameraFrame {
+  position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 2.05rem;
+  background: rgba(255, 252, 247, 0.72);
+}
+
+.previewImage,
+.cameraVideo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   filter: saturate(0.98) contrast(1.01);
+}
+
+.cameraVideo {
+  position: absolute;
+  inset: 0;
+}
+
+.cameraFrame .previewImage {
+  position: absolute;
+  inset: 0;
 }
 
 .captureStatus {
@@ -94,6 +112,11 @@
 }
 
 .primaryAction:disabled {
+  cursor: progress;
+  opacity: 0.72;
+}
+
+.secondaryAction:disabled {
   cursor: progress;
   opacity: 0.72;
 }

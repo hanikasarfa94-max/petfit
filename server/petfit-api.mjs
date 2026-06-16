@@ -25,7 +25,7 @@ const readBody = (req) =>
     req.on("data", (chunk) => {
       body += chunk;
 
-      if (body.length > 1_000_000) {
+      if (body.length > 8_000_000) {
         reject(new Error("Request body too large"));
         req.destroy();
       }
@@ -115,6 +115,10 @@ async function recognize(body) {
   );
   const promptCatalog = Array.from(catalogByKey.values());
   const sceneHint = String(body.sceneHint || "A pet food and drink capture");
+  const imageDataUrl =
+    typeof body.imageDataUrl === "string" && body.imageDataUrl.startsWith("data:image/")
+      ? body.imageDataUrl
+      : undefined;
 
   const prompt = [
     "You are PetFit's food and drink recognition mapper.",
@@ -124,11 +128,20 @@ async function recognize(body) {
     "Return only JSON with this schema:",
     '{"suggestedTargetObject":"bowl|bottle","notes":"short Chinese note","candidates":[{"recognitionKey":"catalog key","confidence":0.0,"selected":true}]}',
     "The candidates array should contain 1 to 6 rows and each recognitionKey must exactly match one catalog key.",
-    "Prefer food/drink items visible or strongly implied by the scene hint.",
+    imageDataUrl
+      ? "Use the provided image as the primary source. Prefer food/drink items visibly present in the photo."
+      : "Prefer food/drink items visible or strongly implied by the scene hint.",
     "",
     `Scene hint: ${sceneHint}`,
     `Fixed sticker catalog: ${JSON.stringify(promptCatalog)}`,
   ].join("\n");
+
+  const userContent = imageDataUrl
+    ? [
+        { type: "text", text: prompt },
+        { type: "image_url", image_url: { url: imageDataUrl } },
+      ]
+    : prompt;
 
   const response = await fetch(`${arkBaseUrl}/chat/completions`, {
     method: "POST",
@@ -145,7 +158,7 @@ async function recognize(body) {
         },
         {
           role: "user",
-          content: prompt,
+          content: userContent,
         },
       ],
       model: arkModel,
