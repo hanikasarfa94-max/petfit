@@ -1,5 +1,6 @@
 .app {
   min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -13,6 +14,7 @@
 .viewport {
   width: 100%;
   min-height: 100svh;
+  min-height: 100dvh;
   position: relative;
   z-index: 1;
   overflow: auto;
@@ -33,6 +35,7 @@
     1.25rem
     max(1.35rem, env(safe-area-inset-bottom));
   min-height: 100svh;
+  min-height: 100dvh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -205,11 +208,13 @@
   .viewport {
     width: min(100%, 430px);
     min-height: calc(100svh - 2rem);
+    min-height: calc(100dvh - 2rem);
     border-radius: 28px;
     box-shadow: 0 28px 72px rgba(133, 93, 45, 0.18);
   }
 
   .page {
     min-height: calc(100svh - 2rem);
+    min-height: calc(100dvh - 2rem);
   }
 }

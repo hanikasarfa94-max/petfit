@@ -109,7 +109,7 @@ export function BottlePage() {
           ))}
 
           <section className={cx(styles.dateRailWrap, styles.dateRailOverlay)}>
-            <div ref={dateRailRef} className={styles.dateRail}>
+            <div ref={dateRailRef} className={styles.dateRail} data-swipe-lock="true">
               {dateItems.map((item) => (
                 <button
                   key={item.date}

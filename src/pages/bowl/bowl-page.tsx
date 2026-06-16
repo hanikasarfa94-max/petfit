@@ -144,7 +144,7 @@ export function BowlPage() {
       <div className={styles.sceneSpacer} />
 
       <section className={styles.dateRailWrap}>
-        <div ref={dateRailRef} className={styles.dateRail}>
+          <div ref={dateRailRef} className={styles.dateRail} data-swipe-lock="true">
           {dateItems.map((item) => (
             <button
               key={item.date}

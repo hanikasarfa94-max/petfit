@@ -1,4 +1,7 @@
 .bottlePage {
+  --action-bottom: max(0.18rem, env(safe-area-inset-bottom));
+  --date-bottom: calc(var(--action-bottom) + 4.45rem);
+  --object-bottom: clamp(8rem, 17svh, 9.2rem);
   flex: 1;
   min-height: 100%;
   display: flex;
@@ -27,6 +30,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center bottom;
 }
 
 .sceneVeil {
@@ -47,7 +51,7 @@
 }
 
 .heroBubble {
-  top: 3.55rem;
+  top: clamp(2.4rem, 6.4svh, 3.55rem);
   left: 50%;
   transform: translateX(-50%);
   padding: 0.88rem 1.35rem;
@@ -73,16 +77,16 @@
 
 .heroMascot {
   right: 1.28rem;
-  bottom: 9.95rem;
-  width: 5.35rem;
+  bottom: calc(var(--object-bottom) + 0.85rem);
+  width: clamp(4.55rem, 16vw, 5.35rem);
   filter: drop-shadow(0 12px 20px rgba(148, 103, 54, 0.15));
 }
 
 .bottleHotspot {
   left: 50%;
-  bottom: 9.1rem;
-  width: 7.4rem;
-  height: 9.2rem;
+  bottom: var(--object-bottom);
+  width: clamp(6.4rem, 23vw, 7.4rem);
+  height: clamp(7.8rem, 28vw, 9.2rem);
   transform: translateX(-50%);
   border: 0;
   padding: 0;
@@ -126,23 +130,23 @@
 }
 
 .drinkLeftTop {
-  left: 7.95rem;
-  top: 13.4rem;
+  left: clamp(6.15rem, 31vw, 7.95rem);
+  top: clamp(11rem, 25svh, 13.4rem);
 }
 
 .drinkRightTop {
-  right: 7.95rem;
-  top: 13.45rem;
+  right: clamp(6.15rem, 31vw, 7.95rem);
+  top: clamp(11rem, 25svh, 13.45rem);
 }
 
 .drinkLeftBottom {
-  left: 7.75rem;
-  top: 17rem;
+  left: clamp(5.95rem, 30vw, 7.75rem);
+  top: clamp(14.2rem, 32svh, 17rem);
 }
 
 .drinkRightBottom {
-  right: 7.7rem;
-  top: 16.95rem;
+  right: clamp(5.9rem, 30vw, 7.7rem);
+  top: clamp(14.2rem, 32svh, 16.95rem);
 }
 
 .dateRail {
@@ -205,13 +209,13 @@
 .dateRailOverlay {
   left: 0.1rem;
   right: 0.1rem;
-  bottom: 4.65rem;
+  bottom: var(--date-bottom);
   z-index: 2;
 }
 
 .actionRowOverlay {
   left: 0;
   right: 0;
-  bottom: 0.18rem;
+  bottom: var(--action-bottom);
   z-index: 2;
 }

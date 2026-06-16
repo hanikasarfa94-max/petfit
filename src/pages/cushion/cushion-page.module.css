@@ -1,4 +1,7 @@
 .cushionPage {
+  --action-bottom: max(0rem, env(safe-area-inset-bottom));
+  --date-bottom: calc(var(--action-bottom) + 4.65rem);
+  --object-bottom: clamp(7.25rem, 15.5svh, 8.28rem);
   position: relative;
   isolation: isolate;
   flex: 1;
@@ -54,7 +57,7 @@
 }
 
 .heroBubble {
-  top: 0.95rem;
+  top: clamp(0.65rem, 2.1svh, 0.95rem);
   left: 50%;
   transform: translateX(-50%);
   padding: 0.64rem 1.08rem;
@@ -68,7 +71,7 @@
 }
 
 .summaryPanel {
-  top: 4.02rem;
+  top: clamp(3.35rem, 8svh, 4.02rem);
   left: 0.3rem;
   right: 0.3rem;
   display: grid;
@@ -101,8 +104,8 @@
 
 .sceneObjectButton {
   left: 50%;
-  bottom: 8.28rem;
-  width: min(15rem, calc(100% - 2.2rem));
+  bottom: var(--object-bottom);
+  width: min(clamp(12.5rem, 58vw, 15rem), calc(100% - 2.2rem));
   transform: translateX(-50%);
   border: 0;
   padding: 0;
@@ -130,7 +133,7 @@
 .dateRailOverlay {
   left: 0;
   right: 0;
-  bottom: 4.65rem;
+  bottom: var(--date-bottom);
   z-index: 2;
 }
 
@@ -178,7 +181,7 @@
 .actionRowOverlay {
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: var(--action-bottom);
   z-index: 2;
 }
 
