@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { demoAssets } from "../../demo/demo-data";
 import shellStyles from "../../demo/demo-shell.module.css";
+import { BudingFrameAnimation } from "../../features/pet-animation/buding-frame-animation";
 import { PrototypeAssetImage } from "../../features/recognition/prototype-asset-image";
 import styles from "./home-page.module.css";
 
@@ -41,7 +42,7 @@ export function PetFitHomePage() {
           <div className={styles.stickerPlaceholder} />
         </div>
 
-        <PrototypeAssetImage className={styles.heroMascot} path={demoAssets.mascotSmile} alt="PetFit 布丁伙伴" />
+        <BudingFrameAnimation className={styles.heroMascot} alt="PetFit 布丁伙伴" />
 
         <Link to="/bowl" className={styles.objectHotspotLeft} aria-label="进入饭碗页面" />
         <Link to="/bottle" className={styles.objectHotspotRight} aria-label="进入水瓶页面" />
