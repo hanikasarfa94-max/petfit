@@ -96,7 +96,7 @@ export function CaptureReviewFlowPage() {
                 <div className={styles.itemThumbWrap}>
                   <PrototypeAssetImage
                     className={styles.itemThumb}
-                    path={`/assets/derived/named/${candidate.domain === "food" ? "sticker-food" : "sticker-drink"}/${candidate.stickerAssetName}`}
+                    path={`/assets/derived/named/${candidate.domain === "food" ? "sticker-food" : "sticker-drink"}/${candidate.stickerAssetName}.png`}
                     alt=""
                   />
                 </div>

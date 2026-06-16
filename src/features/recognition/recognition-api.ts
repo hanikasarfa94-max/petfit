@@ -73,10 +73,12 @@ const createSessionFromResponse = (response: RecognitionApiResponse): CaptureSes
 
 export async function recognizeCurrentCapture(): Promise<CaptureSession> {
   const catalog = recognitionCatalog.entries.map((entry) => ({
+    aliases: entry.synonyms.slice(0, 6),
+    domain: entry.domain,
     key: entry.recognitionKey,
     label: entry.displayName,
-    domain: entry.domain,
-    aliases: entry.synonyms.slice(0, 4),
+    stickerAssetName: entry.stickerAssetName,
+    targetObject: entry.targetObject,
   }));
 
   const response = await fetch(`${API_BASE_URL}/api/recognize`, {

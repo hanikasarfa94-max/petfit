@@ -41,21 +41,33 @@ const readBody = (req) =>
     req.on("error", reject);
   });
 
-const normalizeCandidates = (payload, allowedKeys) => {
+const normalizeCandidates = (payload, catalogByKey) => {
   const rawCandidates = Array.isArray(payload?.candidates) ? payload.candidates : [];
   const seen = new Set();
 
   return rawCandidates
-    .map((candidate) => ({
-      confidence:
-        typeof candidate?.confidence === "number"
-          ? Math.max(0.2, Math.min(0.99, candidate.confidence))
-          : 0.72,
-      recognitionKey: String(candidate?.recognitionKey || candidate?.key || ""),
-      selected: true,
-    }))
+    .map((candidate) => {
+      const recognitionKey = String(candidate?.recognitionKey || candidate?.key || "");
+      const catalogEntry = catalogByKey.get(recognitionKey);
+
+      if (!catalogEntry) {
+        return undefined;
+      }
+
+      return {
+        confidence:
+          typeof candidate?.confidence === "number"
+            ? Math.max(0.2, Math.min(0.99, candidate.confidence))
+            : 0.72,
+        domain: catalogEntry.domain,
+        recognitionKey,
+        selected: true,
+        stickerAssetName: catalogEntry.stickerAssetName,
+        targetObject: catalogEntry.targetObject,
+      };
+    })
     .filter((candidate) => {
-      if (!allowedKeys.has(candidate.recognitionKey) || seen.has(candidate.recognitionKey)) {
+      if (!candidate || seen.has(candidate.recognitionKey)) {
         return false;
       }
 
@@ -86,18 +98,36 @@ async function recognize(body) {
   }
 
   const catalog = Array.isArray(body.catalog) ? body.catalog.slice(0, 120) : [];
-  const allowedKeys = new Set(catalog.map((entry) => String(entry.key)));
+  const catalogByKey = new Map(
+    catalog
+      .filter((entry) => entry?.key && entry?.stickerAssetName)
+      .map((entry) => [
+        String(entry.key),
+        {
+          aliases: Array.isArray(entry.aliases) ? entry.aliases.slice(0, 6) : [],
+          domain: entry.domain === "drink" ? "drink" : "food",
+          key: String(entry.key),
+          label: String(entry.label || entry.key),
+          stickerAssetName: String(entry.stickerAssetName),
+          targetObject: entry.targetObject === "bottle" ? "bottle" : "bowl",
+        },
+      ]),
+  );
+  const promptCatalog = Array.from(catalogByKey.values());
   const sceneHint = String(body.sceneHint || "A pet food and drink capture");
 
   const prompt = [
     "You are PetFit's food and drink recognition mapper.",
+    "PetFit has a fixed sticker asset catalog. You must choose recognitionKey values from that catalog only.",
+    "Every catalog row maps to one existing stickerAssetName; never invent foods, drinks, keys, or asset names.",
+    "If a visible item is not in the catalog, choose the nearest available catalog row such as veggie_assortment, combo_assorted_meals, water, or milk_tea.",
     "Return only JSON with this schema:",
     '{"suggestedTargetObject":"bowl|bottle","notes":"short Chinese note","candidates":[{"recognitionKey":"catalog key","confidence":0.0,"selected":true}]}',
-    "Only use recognitionKey values from the provided catalog.",
+    "The candidates array should contain 1 to 6 rows and each recognitionKey must exactly match one catalog key.",
     "Prefer food/drink items visible or strongly implied by the scene hint.",
     "",
     `Scene hint: ${sceneHint}`,
-    `Catalog: ${JSON.stringify(catalog)}`,
+    `Fixed sticker catalog: ${JSON.stringify(promptCatalog)}`,
   ].join("\n");
 
   const response = await fetch(`${arkBaseUrl}/chat/completions`, {
@@ -137,7 +167,7 @@ async function recognize(body) {
   }
 
   const parsed = extractJsonObject(content);
-  const candidates = normalizeCandidates(parsed, allowedKeys);
+  const candidates = normalizeCandidates(parsed, catalogByKey);
 
   return {
     candidates,
