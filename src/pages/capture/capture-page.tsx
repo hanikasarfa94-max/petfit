@@ -1,14 +1,11 @@
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { usePetFitActions } from "../../app/store/use-petfit-store";
 import { demoAssets } from "../../demo/demo-data";
 import shellStyles from "../../demo/demo-shell.module.css";
-import { usePetFitActions } from "../../app/store/use-petfit-store";
+import { recognizeCurrentCapture } from "../../features/recognition/recognition-api";
 import { PrototypeAssetImage } from "../../features/recognition/prototype-asset-image";
-import {
-  createFallbackRecognitionSession,
-  recognizeCurrentCapture,
-} from "../../features/recognition/recognition-api";
 import styles from "./capture-page.module.css";
 
 const toDataUrl = (base64: string, format = "jpeg") =>
@@ -24,59 +21,55 @@ export function CaptureHubPage() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const [capturedImageDataUrl, setCapturedImageDataUrl] = useState<string>();
+  const [cameraActive, setCameraActive] = useState(false);
   const [cameraReady, setCameraReady] = useState(false);
   const [isRecognizing, setIsRecognizing] = useState(false);
   const [isTakingPhoto, setIsTakingPhoto] = useState(false);
-  const [statusText, setStatusText] = useState("正在准备相机...");
+  const [statusText, setStatusText] = useState("先拍一张食物或饮品照片，再开始识别");
 
   useEffect(() => {
-    let cancelled = false;
-
-    const startInlineCamera = async () => {
-      if (!navigator.mediaDevices?.getUserMedia) {
-        setStatusText("当前环境不支持页面内相机，可使用系统相机兜底");
-        return;
-      }
-
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: false,
-          video: {
-            facingMode: { ideal: "environment" },
-            height: { ideal: 1280 },
-            width: { ideal: 960 },
-          },
-        });
-
-        if (cancelled) {
-          stopStream(stream);
-          return;
-        }
-
-        streamRef.current = stream;
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-          await videoRef.current.play();
-        }
-        setCameraReady(true);
-        setStatusText("把食物或饮品放进取景框");
-      } catch (error) {
-        setStatusText(
-          error instanceof Error
-            ? `页面内相机不可用：${error.message}`
-            : "页面内相机不可用，可使用系统相机兜底",
-        );
-      }
-    };
-
-    startInlineCamera();
-
     return () => {
-      cancelled = true;
       stopStream(streamRef.current);
       streamRef.current = null;
     };
   }, []);
+
+  const startInlineCamera = async () => {
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setStatusText("当前环境不支持页内相机，将打开系统相机");
+      return false;
+    }
+
+    try {
+      stopStream(streamRef.current);
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+          facingMode: { ideal: "environment" },
+          height: { ideal: 1280 },
+          width: { ideal: 960 },
+        },
+      });
+
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play();
+      }
+
+      setCameraActive(true);
+      setCameraReady(true);
+      setStatusText("把食物或饮品放进取景框");
+      return true;
+    } catch (error) {
+      setCameraActive(false);
+      setCameraReady(false);
+      setStatusText(
+        error instanceof Error ? `页内相机不可用：${error.message}` : "页内相机不可用",
+      );
+      return false;
+    }
+  };
 
   const captureInlineFrame = () => {
     const video = videoRef.current;
@@ -108,10 +101,27 @@ export function CaptureHubPage() {
     setIsTakingPhoto(true);
 
     try {
+      if (capturedImageDataUrl) {
+        setCapturedImageDataUrl(undefined);
+        await startInlineCamera();
+        return;
+      }
+
       if (cameraReady) {
         const imageDataUrl = captureInlineFrame();
         setCapturedImageDataUrl(imageDataUrl);
+        stopStream(streamRef.current);
+        streamRef.current = null;
+        setCameraActive(false);
+        setCameraReady(false);
         setStatusText("照片已拍下，可以开始识别");
+        return;
+      }
+
+      setStatusText("正在打开相机...");
+      const inlineStarted = await startInlineCamera();
+
+      if (inlineStarted) {
         return;
       }
 
@@ -133,11 +143,7 @@ export function CaptureHubPage() {
       setCapturedImageDataUrl(toDataUrl(photo.base64String, photo.format));
       setStatusText("照片已准备好，可以开始识别");
     } catch (error) {
-      setStatusText(
-        error instanceof Error
-          ? `拍摄失败：${error.message}`
-          : "拍摄失败，可先用测试图继续",
-      );
+      setStatusText(error instanceof Error ? `拍摄失败：${error.message}` : "拍摄失败，请重新尝试");
     } finally {
       setIsTakingPhoto(false);
     }
@@ -148,18 +154,20 @@ export function CaptureHubPage() {
       return;
     }
 
+    if (!capturedImageDataUrl) {
+      setStatusText("请先拍一张照片");
+      return;
+    }
+
     setIsRecognizing(true);
-    setStatusText(capturedImageDataUrl ? "正在识别照片..." : "正在用测试图识别...");
+    setStatusText("正在识别照片...");
 
     try {
       const session = await recognizeCurrentCapture(capturedImageDataUrl);
       upsertCaptureSession(session);
       navigate("/capture/review");
     } catch (error) {
-      const session = createFallbackRecognitionSession();
-      upsertCaptureSession(session);
-      setStatusText(error instanceof Error ? error.message : "云端识别暂时不可用");
-      navigate("/capture/review");
+      setStatusText(error instanceof Error ? error.message : "云端识别暂时不可用，请稍后重试");
     } finally {
       setIsRecognizing(false);
     }
@@ -194,12 +202,16 @@ export function CaptureHubPage() {
                 muted
                 playsInline
               />
-              {!cameraReady ? (
-                <PrototypeAssetImage
-                  className={styles.previewImage}
-                  path={demoAssets.preview}
-                  alt="测试拍摄内容"
-                />
+              {!cameraActive ? (
+                <div className={styles.cameraPlaceholder}>
+                  <PrototypeAssetImage
+                    className={styles.placeholderIcon}
+                    path={demoAssets.camera}
+                    alt=""
+                  />
+                  <strong>打开相机开始拍摄</strong>
+                  <span>照片只用于本次识别</span>
+                </div>
               ) : null}
             </>
           )}
@@ -212,14 +224,7 @@ export function CaptureHubPage() {
           className={styles.secondaryAction}
           disabled={isTakingPhoto || isRecognizing}
           type="button"
-          onClick={() => {
-            if (capturedImageDataUrl) {
-              setCapturedImageDataUrl(undefined);
-              setStatusText(cameraReady ? "把食物或饮品放进取景框" : "可以重新拍摄");
-              return;
-            }
-            void handleTakePhoto();
-          }}
+          onClick={() => void handleTakePhoto()}
         >
           <PrototypeAssetImage path={demoAssets.camera} alt="" />
           <span>{capturedImageDataUrl ? "重拍" : cameraReady ? "拍下" : "打开相机"}</span>
@@ -227,7 +232,7 @@ export function CaptureHubPage() {
 
         <button
           className={styles.primaryAction}
-          disabled={isRecognizing || isTakingPhoto}
+          disabled={isRecognizing || isTakingPhoto || !capturedImageDataUrl}
           type="button"
           onClick={handleRecognize}
         >

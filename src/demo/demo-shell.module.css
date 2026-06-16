@@ -7,34 +7,7 @@
   position: relative;
   overflow: auto;
   isolation: isolate;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.72), transparent 36%),
-    linear-gradient(180deg, #ecf1f6, #dfe7ef);
-}
-
-.app::before,
-.app::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.app::before {
-  inset: -6%;
-  background-image: var(--stage-bg-image);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: blur(28px) saturate(0.92);
-  opacity: 0.46;
-  transform: scale(1.08);
-}
-
-.app::after {
-  background:
-    linear-gradient(180deg, rgba(248, 250, 252, 0.24), rgba(232, 238, 246, 0.44)),
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.14), transparent 52%);
+  background: #fff8ec;
 }
 
 .viewport {
@@ -81,15 +54,8 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+  background: rgba(255, 254, 251, 0.94);
   box-shadow: 0 10px 24px rgba(122, 83, 41, 0.12);
-}
-
-.backButton::before,
-.ghostButton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: center / contain no-repeat url("../../assets/derived/ui-kit/shell_button_square_secondary.png");
 }
 
 .backButton img,
@@ -107,7 +73,7 @@
   text-align: center;
   color: #56341e;
   font-size: 2rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .topSpacer {
@@ -118,17 +84,25 @@
 .speechBubble {
   position: relative;
   max-width: 16rem;
-  padding: 1rem 1.25rem;
-  border-radius: 1.75rem;
-  background: center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_bubble_speech_lg.png");
-  color: #765239;
-  box-shadow: 0 16px 32px rgba(122, 83, 41, 0.12);
+  padding: 0.9rem 1.15rem;
+  border-radius: 1.35rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #6b4b2f;
+  box-shadow: 0 10px 24px rgba(122, 83, 41, 0.1);
   line-height: 1.45;
   font-size: 1rem;
 }
 
 .speechBubble::after {
-  display: none;
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  bottom: -0.34rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  background: inherit;
+  border-radius: 0.18rem;
+  transform: rotate(45deg);
 }
 
 .glassCard {
@@ -152,7 +126,7 @@
   gap: 0.65rem;
   min-height: 4.4rem;
   padding: 0 1.4rem;
-  border-radius: 999px;
+  border-radius: 1.4rem;
   font-size: 1.1rem;
   font-weight: 700;
   color: #634127;
@@ -161,12 +135,12 @@
 }
 
 .primaryLink {
-  background: center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_button_pill_primary_lg.png");
+  background: linear-gradient(180deg, #ffd86f, #ffc44f);
   color: #fffdf8;
 }
 
 .secondaryLink {
-  background: center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_button_pill_secondary_lg.png");
+  background: rgba(255, 254, 251, 0.94);
 }
 
 .linkIcon {
@@ -198,7 +172,7 @@
 }
 
 .dateChipStrong {
-  background: center / 100% 100% no-repeat url("../../assets/derived/ui-kit/shell_chip_circle_primary.png");
+  background: linear-gradient(180deg, #f7d678, #efc15e);
   color: #6d471f;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42);
 }

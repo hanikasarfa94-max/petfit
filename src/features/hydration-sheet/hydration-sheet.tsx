@@ -21,26 +21,26 @@ export interface HydrationSheetProps {
 const hydrationPresets: HydrationPreset[] = [
   {
     amountMl: 350,
-    label: "Fresh water",
-    note: "A clean refill for the day.",
+    label: "白水",
+    note: "清爽补水，适合日常记录。",
     recognitionKey: "water",
   },
   {
     amountMl: 280,
-    label: "Coffee break",
-    note: "A gentle boost for the afternoon.",
+    label: "咖啡",
+    note: "下午提神，记得别太晚喝。",
     recognitionKey: "coffee",
   },
   {
     amountMl: 300,
-    label: "Orange juice",
-    note: "Bright and a little sweet.",
+    label: "橙汁",
+    note: "有点甜，也算今天的一杯。",
     recognitionKey: "orange_juice",
   },
   {
     amountMl: 480,
-    label: "Milk tea treat",
-    note: "Dessert drink energy.",
+    label: "奶茶",
+    note: "甜饮也会同步到水瓶记录。",
     recognitionKey: "milk_tea",
   },
 ];
@@ -87,33 +87,30 @@ export function HydrationSheet({
     <SheetShell
       dismissAction={
         <button className={styles.closeButton} onClick={dismiss} type="button">
-          Close
+          关闭
         </button>
       }
       footer={
         <div className={styles.footer}>
           <button className={styles.submitButton} onClick={saveRecord} type="button">
-            Save drink record
+            保存饮水记录
           </button>
-          <p className={styles.supportingText}>
-            This stays mock-driven for now and writes directly into the local prototype
-            store.
-          </p>
+          <p className={styles.supportingText}>保存后会更新今天的水瓶进度。</p>
         </div>
       }
       open={open}
-      subtitle="Quick hydration entry"
-      title="Add a drink"
+      subtitle="快速补一条饮水记录"
+      title="记录这杯饮品"
     >
       <div className={styles.stack}>
         <section className={styles.previewCard}>
-          <p className={styles.previewLabel}>Preview</p>
+          <p className={styles.previewLabel}>预览</p>
           <p className={styles.previewValue}>{previewText}</p>
           <p className={styles.previewMeta}>{notes.trim() || activePreset.note}</p>
         </section>
 
         <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Pick a drink mood</h3>
+          <h3 className={styles.sectionTitle}>饮品类型</h3>
           <div className={styles.presetGrid}>
             {hydrationPresets.map((preset) => {
               const isActive = preset.recognitionKey === activePreset.recognitionKey;
@@ -141,7 +138,7 @@ export function HydrationSheet({
         </section>
 
         <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Amount</h3>
+          <h3 className={styles.sectionTitle}>容量</h3>
           <div className={styles.amountRow}>
             {amountOptions.map((option) => (
               <ActionPill
@@ -158,11 +155,11 @@ export function HydrationSheet({
         </section>
 
         <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Soft note</h3>
+          <h3 className={styles.sectionTitle}>备注</h3>
           <textarea
             className={styles.noteInput}
             onChange={(event) => setNotes(event.target.value)}
-            placeholder="Optional: after workout, late meeting, afternoon pick-me-up..."
+            placeholder="例如：运动后、午饭后、开会间隙..."
             value={notes}
           />
         </section>

@@ -166,7 +166,7 @@
   color: var(--pf-text-soft);
   font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -249,7 +249,7 @@
 }
 
 .actionToneLavender {
-  background: linear-gradient(180deg, #f2e8ff, #dfcbff);
+  background: linear-gradient(180deg, #fff6e6, #f5dfbb);
 }
 
 .actionIcon {
@@ -322,7 +322,7 @@
 }
 
 .bubbleToneLavender {
-  background: rgba(248, 242, 255, 0.95);
+  background: rgba(255, 247, 232, 0.95);
 }
 
 .bubblePointerBottom::after,
@@ -411,7 +411,7 @@
 .heroToneLavender {
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.82), transparent 30%),
-    linear-gradient(180deg, rgba(251, 247, 255, 0.98), rgba(237, 225, 255, 0.86));
+    linear-gradient(180deg, rgba(255, 250, 242, 0.98), rgba(247, 224, 190, 0.86));
 }
 
 .heroBackdrop {

@@ -2,11 +2,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { usePetFitActions, usePetFitStore } from "../../app/store";
 import { demoAssets } from "../../demo/demo-data";
+import shellStyles from "../../demo/demo-shell.module.css";
 import { selectCushionView } from "../../domain";
 import { PrototypeAssetImage } from "../../features/recognition/prototype-asset-image";
 import { RestSheet } from "../../features/rest-sheet";
 import { cx } from "../../shared/lib/cx";
-import shellStyles from "../../demo/demo-shell.module.css";
 import styles from "./cushion-page.module.css";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -88,11 +88,18 @@ export function CushionPage() {
             </div>
           </div>
 
-          <PrototypeAssetImage
-            className={styles.sceneObject}
-            path={view.objectAsset.webPath}
-            alt="休息场景"
-          />
+          <button
+            type="button"
+            className={styles.sceneObjectButton}
+            onClick={() => setSheetOpen(true)}
+            aria-label="打开休息日志"
+          >
+            <PrototypeAssetImage
+              className={styles.sceneObject}
+              path={view.objectAsset.webPath}
+              alt=""
+            />
+          </button>
 
           <section className={cx(styles.dateRailWrap, styles.dateRailOverlay)}>
             <div ref={dateRailRef} className={styles.dateRail}>

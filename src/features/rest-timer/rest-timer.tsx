@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import type { RestMode } from "../../entities";
 import { usePetFitActions } from "../../app/store";
+import type { RestMode } from "../../entities";
 import { ActionPill, SheetShell } from "../../shared/ui/mobile-shell";
 import { createRestRecord } from "../rest-sheet";
 import styles from "./rest-timer.module.css";
@@ -14,9 +14,9 @@ export interface RestTimerProps {
 
 const durationOptions = [5, 10, 20, 30];
 const modeOptions: Array<{ label: string; mode: RestMode }> = [
-  { label: "Break", mode: "break" },
-  { label: "Nap", mode: "nap" },
-  { label: "Sleep", mode: "sleep" },
+  { label: "放松", mode: "break" },
+  { label: "小憩", mode: "nap" },
+  { label: "睡眠", mode: "sleep" },
 ];
 
 const formatClock = (seconds: number) => {
@@ -80,7 +80,7 @@ export function RestTimer({
   }, [durationMinutes, secondsRemaining]);
 
   const activeModeLabel =
-    modeOptions.find((option) => option.mode === restMode)?.label ?? "Break";
+    modeOptions.find((option) => option.mode === restMode)?.label ?? "放松";
 
   const syncDuration = (minutes: number) => {
     setDurationMinutes(minutes);
@@ -102,8 +102,8 @@ export function RestTimer({
         durationMinutes,
         notes:
           secondsRemaining === 0
-            ? "Mock timer finished"
-            : `Mock timer saved with ${formatClock(secondsRemaining)} remaining`,
+            ? "休息计时已完成"
+            : `保存时还剩 ${formatClock(secondsRemaining)}`,
         restMode,
         selectedDate,
         sequence: existingCount + 1,
@@ -116,30 +116,27 @@ export function RestTimer({
     <SheetShell
       dismissAction={
         <button className={styles.closeButton} onClick={dismiss} type="button">
-          Close
+          关闭
         </button>
       }
       footer={
         <div className={styles.footer}>
           <button className={styles.saveButton} onClick={saveRecord} type="button">
-            Save timed rest
+            保存休息记录
           </button>
-          <p className={styles.supportingText}>
-            The countdown is intentionally lightweight, but it already writes a valid
-            rest record into the prototype store.
-          </p>
+          <p className={styles.supportingText}>保存后会更新今天的垫子休息记录。</p>
         </div>
       }
       open={open}
-      subtitle="Lightweight prototype countdown"
-      title="Start a rest timer"
+      subtitle="计时结束或中途保存都可以记录"
+      title="开始休息计时"
     >
       <div className={styles.stack}>
         <section className={styles.timerCard}>
-          <p className={styles.timerLabel}>Timer</p>
+          <p className={styles.timerLabel}>计时</p>
           <p className={styles.timerValue}>{formatClock(secondsRemaining)}</p>
           <p className={styles.timerMeta}>
-            {activeModeLabel} · {durationMinutes} minute session
+            {activeModeLabel} · {durationMinutes} 分钟
           </p>
           <div className={styles.progressRail}>
             <div className={styles.progressFill} style={{ width: `${progress}%` }} />
@@ -147,7 +144,7 @@ export function RestTimer({
         </section>
 
         <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Session length</h3>
+          <h3 className={styles.sectionTitle}>时长</h3>
           <div className={styles.optionRow}>
             {durationOptions.map((option) => (
               <ActionPill
@@ -157,14 +154,14 @@ export function RestTimer({
                 strong={durationMinutes === option}
                 tone={durationMinutes === option ? "lavender" : "neutral"}
               >
-                {option} min
+                {option} 分钟
               </ActionPill>
             ))}
           </div>
         </section>
 
         <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Rest mode</h3>
+          <h3 className={styles.sectionTitle}>休息方式</h3>
           <div className={styles.optionRow}>
             {modeOptions.map((option) => (
               <ActionPill
@@ -186,14 +183,14 @@ export function RestTimer({
             onClick={() => setIsRunning((current) => !current)}
             type="button"
           >
-            {isRunning ? "Pause" : "Start"}
+            {isRunning ? "暂停" : "开始"}
           </button>
           <button
             className={styles.secondaryButton}
             onClick={() => syncDuration(durationMinutes)}
             type="button"
           >
-            Reset
+            重置
           </button>
         </div>
       </div>
