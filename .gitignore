@@ -13,3 +13,4 @@ tools/
 vite-home.png
 .repo-tmp/
 release/
+artifacts/*.zip
