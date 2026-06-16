@@ -9,17 +9,73 @@ $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $assetRoot = Join-Path $root 'assets'
 
 $moods = @(
-  @{ Key = 'happy'; Label = 'Buding'; Hint = 'Tap me'; Image = 'character_buding_wave.png' },
-  @{ Key = 'idle'; Label = 'PetFit'; Hint = 'Ready for a tiny walk?'; Image = 'character_buding_idle_front.png' },
-  @{ Key = 'hungry'; Label = 'Hungry'; Hint = 'Snack check'; Image = 'character_buding_hungry_empty_bowl.png' },
-  @{ Key = 'thirsty'; Label = 'Thirsty'; Hint = 'Water break'; Image = 'character_buding_thirsty_empty_bottle.png' },
-  @{ Key = 'sleepy'; Label = 'Sleepy'; Hint = 'Nap mode'; Image = 'character_buding_sleeping_blue_cushion.png' }
+  @{
+    Key = 'happy'
+    Label = 'Buding'
+    Hint = 'Tap me'
+    Frames = @(
+      'character_buding_idle_front.png',
+      'character_buding_smile.png',
+      'character_buding_wave.png',
+      'character_buding_success_wave.png',
+      'character_buding_celebrate.png',
+      'character_buding_wave.png'
+    )
+  },
+  @{
+    Key = 'idle'
+    Label = 'PetFit'
+    Hint = 'Ready for a tiny walk?'
+    Frames = @(
+      'character_buding_idle_front.png',
+      'character_buding_smile.png',
+      'character_buding_stretch.png',
+      'character_buding_turn_right.png',
+      'character_buding_walk_left.png',
+      'character_buding_idle_front.png'
+    )
+  },
+  @{
+    Key = 'hungry'
+    Label = 'Hungry'
+    Hint = 'Snack check'
+    Frames = @(
+      'character_buding_hungry_empty_bowl.png',
+      'character_buding_worried.png',
+      'character_buding_eat_strawberry.png',
+      'character_buding_smile.png'
+    )
+  },
+  @{
+    Key = 'thirsty'
+    Label = 'Thirsty'
+    Hint = 'Water break'
+    Frames = @(
+      'character_buding_thirsty_empty_bottle.png',
+      'character_buding_confused.png',
+      'character_buding_drink_water.png',
+      'character_buding_smile.png'
+    )
+  },
+  @{
+    Key = 'sleepy'
+    Label = 'Sleepy'
+    Hint = 'Nap mode'
+    Frames = @(
+      'character_buding_yawn_sleepy.png',
+      'character_buding_sleep_curl.png',
+      'character_buding_sleeping_blue_cushion.png',
+      'character_buding_sleeping_blue_cushion.png'
+    )
+  }
 )
 
 foreach ($mood in $moods) {
-  $path = Join-Path $assetRoot $mood.Image
-  if (-not (Test-Path $path)) {
-    throw "Missing pet asset: $path"
+  foreach ($frame in $mood.Frames) {
+    $path = Join-Path $assetRoot $frame
+    if (-not (Test-Path $path)) {
+      throw "Missing pet asset: $path"
+    }
   }
 }
 
@@ -161,22 +217,24 @@ $exitItem = $contextMenu.Items.Add('Exit')
 $form.ContextMenuStrip = $contextMenu
 
 $script:currentMood = 0
+$script:currentFrame = 0
 $script:dragging = $false
 $script:dragStart = New-Object System.Drawing.Point
 $script:formStart = New-Object System.Drawing.Point
 $script:tick = 0
+$script:frameTick = 0
 $script:lastImage = $null
 
-function Set-Mood {
-  param([int]$Index)
+function Set-Frame {
+  param([int]$FrameIndex)
 
-  if ($Index -lt 0 -or $Index -ge $moods.Count) {
-    $Index = 0
+  $mood = $moods[$script:currentMood]
+  if ($FrameIndex -lt 0 -or $FrameIndex -ge $mood.Frames.Count) {
+    $FrameIndex = 0
   }
 
-  $script:currentMood = $Index
-  $mood = $moods[$Index]
-  $path = Join-Path $assetRoot $mood.Image
+  $script:currentFrame = $FrameIndex
+  $path = Join-Path $assetRoot $mood.Frames[$FrameIndex]
   $nextImage = [System.Drawing.Image]::FromFile($path)
 
   if ($script:lastImage -ne $null) {
@@ -187,8 +245,22 @@ function Set-Mood {
 
   $script:lastImage = $nextImage
   $picture.Image = $nextImage
+}
+
+function Set-Mood {
+  param([int]$Index)
+
+  if ($Index -lt 0 -or $Index -ge $moods.Count) {
+    $Index = 0
+  }
+
+  $script:currentMood = $Index
+  $script:currentFrame = 0
+  $script:frameTick = 0
+  $mood = $moods[$Index]
   $title.Text = $mood.Label
   $bubble.Text = $mood.Hint
+  Set-Frame 0
 }
 
 function Start-Drag {
@@ -251,7 +323,14 @@ $timer = New-Object System.Windows.Forms.Timer
 $timer.Interval = 90
 $timer.Add_Tick({
   $script:tick++
+  $script:frameTick++
   $picture.Top = 44 + [int](3 * [Math]::Sin($script:tick / 9))
+
+  if ($script:frameTick -ge 7) {
+    $script:frameTick = 0
+    $mood = $moods[$script:currentMood]
+    Set-Frame (($script:currentFrame + 1) % $mood.Frames.Count)
+  }
 })
 
 $form.Add_Resize({
