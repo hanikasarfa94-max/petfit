@@ -53,6 +53,7 @@
 }
 
 .notch {
+  display: none;
   width: 7rem;
   height: 0.42rem;
   border-radius: 999px;

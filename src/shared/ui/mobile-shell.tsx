@@ -90,7 +90,7 @@ export function SafeAreaFrame({
   children,
   className,
   compact = false,
-  notch = true,
+  notch = false,
   ...props
 }: SafeAreaFrameProps) {
   return (
