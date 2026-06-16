@@ -3,13 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "electron/main.cjs",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "desktop:dev": "concurrently -k \"vite --host 127.0.0.1 --port 5173\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
-    "desktop:build": "pnpm run build && node scripts/build-desktop-portable.mjs",
+    "desktop:dev": "powershell -NoProfile -ExecutionPolicy Bypass -File desktop-pet-lite/PetFitBudingPet.ps1",
+    "desktop:test": "powershell -NoProfile -ExecutionPolicy Bypass -File desktop-pet-lite/PetFitBudingPet.ps1 -SelfTest",
+    "desktop:build": "powershell -NoProfile -ExecutionPolicy Bypass -File desktop-pet-lite/build-lite-package.ps1",
     "android:sync": "pnpm run build && cap sync android",
     "android:build": "pnpm run android:sync && cd android && gradlew.bat --init-script init-repositories.gradle assembleDebug"
   },
@@ -26,11 +26,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
-    "concurrently": "^10.0.3",
-    "cross-env": "^10.1.0",
-    "electron": "^42.4.0",
     "typescript": "^5.6.3",
-    "vite": "^5.4.10",
-    "wait-on": "^9.0.10"
+    "vite": "^5.4.10"
   }
 }

@@ -13,4 +13,5 @@ tools/
 vite-home.png
 .repo-tmp/
 release/
-artifacts/*.zip
+artifacts/PetFit-Buding-win-portable.zip
+artifacts/PetFit-Buding-win-portable.zip.part*

@@ -4,4 +4,8 @@
 
 - `PetFit-Buding-debug.apk`
 
-The desktop pet package is not committed here because the Electron runtime makes it much larger than GitHub's normal per-file limit.
+## Lightweight Windows desktop pet
+
+- `PetFit-Buding-lite-desktop.zip`
+
+Unzip it and run `start-petfit-lite.cmd`. This package uses Windows PowerShell and WinForms instead of Electron, so it stays small and behaves more like a lightweight floating desktop pet.
